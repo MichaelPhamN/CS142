@@ -34,7 +34,7 @@ public class BakingCalculator {
 		
 		double recipeBananaBreadLoaf = 1;
 		double recipeBananaBreadAllPurposeFlourCup = 3/2;
-		//Change Cup to Lb of flour
+		//Change cup to Lb of flour
 		double recipeBananaBreadAllPurposeFlourLb = recipeBananaBreadAllPurposeFlourCup/(10/3);
 		
 		double recipeBananaBreadBakingSodaTeaspoon = 1;
