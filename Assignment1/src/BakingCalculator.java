@@ -88,8 +88,29 @@ public class BakingCalculator {
 		
 		double scaleBananaBread = (double)loafCount/recipeBananaBreadLoaf;
 		//============================ ingredients for x loaf of Banana Bread
+		double desiredBananaBreadAllPurposeFlourLb = scaleBananaBread * recipeBananaBreadAllPurposeFlourLb;
+		double desiredBananaBreadBakingSodaOz = scaleBananaBread * recipeBananaBreadBakingSodaOz;
+		double desiredBananaBreadSaltOz = scaleBananaBread * recipeBananaBreadSaltOz;
+		double desiredBananaBreadButterLb = scaleBananaBread * recipeBananaBreadButterLb;
+		double desiredBananaBreadSugarLb = scaleBananaBread * recipeBananaBreadSugarLb;
+		double desiredBananaBreadVanillaExtractOz = scaleBananaBread * recipeBananaBreadVanillaExtractOz;
+		double desiredBananaBreadEgg = scaleBananaBread * recipeBananaBreadEgg;
+		double desiredBananaBreadBanana = scaleBananaBread * recipeBananaBreadBanana;
 		
+		//============================ total ingredients for cookies and banana bread
+		double desiredAllPurposeFlourLb = desiredCookieAllPurposeFlourLb + desiredBananaBreadAllPurposeFlourLb;
+		double desiredBakingSodaOz = desiredCookieBakingSodaOz + desiredBananaBreadBakingSodaOz;
+		double desiredSaltOz = desiredCookieSaltOz + desiredBananaBreadSaltOz;
+		double desiredButterLb = desiredCookieButterLb + desiredBananaBreadButterLb;
+		double desiredSugarLb = desiredCookieSugarLb + desiredBananaBreadSugarLb;
+		double desiredVanillaExtractOz = desiredCookieVanillaExtractOz + desiredBananaBreadVanillaExtractOz;
+		double desiredEgg = desiredCookieEgg + desiredBananaBreadEgg;
+		double desiredChocolateChipCup = desiredCookieChocolateChipCup;
+		double desiredBanana = desiredBananaBreadBanana;
 		
+		//=============================		
+		double costAllPurposeFlourLb = Math.ceil(desiredAllPurposeFlourLb/5) * 4.49;		
+		double costBakingSodaOz = Math.ceil(desiredBakingSodaOz/16) * 1.09;		
 	}
 
 }
