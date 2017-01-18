@@ -7,17 +7,17 @@ public class BakingCalculator {
 		
 		double recipeCookieDozen = 4;
 		
-		double recipeCookieAllPurposeFlourCup = 9/4;
+		double recipeCookieAllPurposeFlourCup = (double)9/4;
 		//Change Cup to Lb of flour
-		double recipeCookieAllPurposeFlourLb = recipeCookieAllPurposeFlourCup/(10/3);		
+		double recipeCookieAllPurposeFlourLb = recipeCookieAllPurposeFlourCup * 3.0/10.0;	
 		
 		double recipeCookieBakingSodaTeaspoon = 1;
 		//Change teaspoon to oz of baking soda
-		double recipeCookieBakingSodaOz = recipeCookieBakingSodaTeaspoon/6;
+		double recipeCookieBakingSodaOz = (double)recipeCookieBakingSodaTeaspoon/6;		
 		
 		double recipeCookieSaltTeaspoon = 1;
 		//Change teaspoon to oz of Salt
-		double recipeCookieSaltOz = recipeCookieSaltTeaspoon/6;
+		double recipeCookieSaltOz = (double)recipeCookieSaltTeaspoon/6;
 		
 		double recipeCookieButterCup = 1;
 		
@@ -37,8 +37,8 @@ public class BakingCalculator {
 		//Change cup to Lb of flour
 		double recipeBananaBreadAllPurposeFlourLb = recipeBananaBreadAllPurposeFlourCup/(10/3);
 		
-		//Change cup to Lb of flour
 		double recipeBananaBreadBakingSodaTeaspoon = 1;
+		//Change cup to Lb of flour
 		
 		//Change cup to Lb of flour
 		double recipeBananaSaltTeaspoon = 1/8;
