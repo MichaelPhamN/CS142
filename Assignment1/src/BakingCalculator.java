@@ -7,9 +7,9 @@ public class BakingCalculator {
 		
 		double recipeCookieDozen = 4;
 		
-		double recipeCookieAllPurposeFlourCup = (double)9/4;
+		double recipeCookieAllPurposeFlourCup = 9.0/4.0;
 		//Change Cup to Lb of flour
-		double recipeCookieAllPurposeFlourLb = recipeCookieAllPurposeFlourCup * 3.0/10.0;	
+		double recipeCookieAllPurposeFlourLb = (double)recipeCookieAllPurposeFlourCup * 3.0/10.0;	
 		
 		double recipeCookieBakingSodaTeaspoon = 1;
 		//Change teaspoon to oz of baking soda
@@ -20,22 +20,24 @@ public class BakingCalculator {
 		double recipeCookieSaltOz = (double)recipeCookieSaltTeaspoon/6;
 		
 		double recipeCookieButterCup = 1;
+		//Change cup to lb of butter
+		double recipeCookieButterOz = (double)recipeCookieButterCup/2;
 		
-		double recipeCookieSugarCup = 3/2;
+		double recipeCookieSugarCup = 3.0/2.0;
 		//Change teaspoon to Lb of Sugar
-		double recipeCookieSugarLb = recipeCookieSugarCup/2;
+		double recipeCookieSugarLb = (double)recipeCookieSugarCup/2;
 		
 		double recipeCookieVanillaExtractTeaspoon = 1;
 		//Change teaspoon to a liquid ounce of VanillaExtract
-		double recipeCookieVanillaExtractOz = recipeCookieVanillaExtractTeaspoon/6;
+		double recipeCookieVanillaExtractOz = (double)recipeCookieVanillaExtractTeaspoon/6;
 		
-		double recipeCookieEgg = 2;
-		double recipeCookieChocolateChipCup = 5/2;
+		double recipeCookieEgg = 2;		
+		double recipeCookieChocolateChipCup = 5.0/2.0;
 		
 		double recipeBananaBreadLoaf = 1;
-		double recipeBananaBreadAllPurposeFlourCup = 3/2;
+		double recipeBananaBreadAllPurposeFlourCup = 3.0/2.0;
 		//Change cup to Lb of flour
-		double recipeBananaBreadAllPurposeFlourLb = recipeBananaBreadAllPurposeFlourCup/(10/3);
+		double recipeBananaBreadAllPurposeFlourLb = recipeBananaBreadAllPurposeFlourCup* 3.0/10.0;
 		
 		double recipeBananaBreadBakingSodaTeaspoon = 1;
 		//Change cup to Lb of flour
