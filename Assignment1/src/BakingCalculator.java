@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 public class BakingCalculator {
 
 	public static void main(String[] args) {
@@ -148,7 +150,9 @@ public class BakingCalculator {
 		System.out.println( (int)packageOfButter + " package(s) of butter");
 		System.out.println( (int)banana + " banana(s)");
 		System.out.println( (int)bagOfChocolateChip + " bag(s) of chocolate chips");
-		System.out.println("Total cost: $" + totalCost);
+		
+		DecimalFormat df = new DecimalFormat("###.##");
+		System.out.println("Total cost: $" + df.format( totalCost));
 	}
 
 }
