@@ -111,6 +111,18 @@ public class BakingCalculator {
 		//=============================		
 		double costAllPurposeFlourLb = Math.ceil(desiredAllPurposeFlourLb/5) * 4.49;		
 		double costBakingSodaOz = Math.ceil(desiredBakingSodaOz/16) * 1.09;		
+		double costSaltOz = Math.ceil(desiredSaltOz/26) * 1.09;
+		double costButterLb = Math.ceil(desiredButterLb) * 3.79;
+		double costSugarLb = Math.ceil(desiredSugarLb) * 1.99;
+		double costVanillaExtractOz = Math.ceil(desiredVanillaExtractOz) * 5.09;
+		double costEgg = Math.ceil(desiredEgg/12) * 1.79;
+		double costBanana = Math.ceil(desiredBanana) * 0.32;
+		double costChocolateChipCup = Math.ceil(desiredChocolateChipCup/2) * 4.19;
+		double totalCost = costAllPurposeFlourLb + costBakingSodaOz + costSaltOz 
+				+ costButterLb + costSugarLb + costVanillaExtractOz + costEgg 
+				+ costBanana + costChocolateChipCup;
+					
+		System.out.println("Total Cost = " + totalCost);
 	}
 
 }
