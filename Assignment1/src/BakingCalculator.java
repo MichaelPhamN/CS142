@@ -2,7 +2,7 @@ public class BakingCalculator {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int cookieCount = 24;
+		int cookieCount = 39;
 		int loafCount = 1;
 		
 		//================================ recipe and change value of cookie
@@ -71,10 +71,10 @@ public class BakingCalculator {
 		
 		
 		double recipeBananaBreadEgg = 1;
-		double recipeBananaBreadBanana = 2;
+		double recipeBananaBreadBanana = 2;		
 		
+		double scaleCookie = (double)Math.ceil(cookieCount/12.0)/(recipeCookieDozen);		
 		
-		double scaleCookie = (double)cookieCount/(recipeCookieDozen * 12);
 		//============================ ingredients for x cookieCount
 		double desiredCookieAllPurposeFlourLb = scaleCookie * recipeCookieAllPurposeFlourLb;
 		double desiredCookieBakingSodaOz = scaleCookie * recipeCookieBakingSodaOz;		
@@ -109,20 +109,46 @@ public class BakingCalculator {
 		double desiredBanana = desiredBananaBreadBanana;
 		
 		//=============================		
-		double costAllPurposeFlourLb = Math.ceil(desiredAllPurposeFlourLb/5) * 4.49;		
-		double costBakingSodaOz = Math.ceil(desiredBakingSodaOz/16) * 1.09;		
-		double costSaltOz = Math.ceil(desiredSaltOz/26) * 1.09;
-		double costButterLb = Math.ceil(desiredButterLb) * 3.79;
-		double costSugarLb = Math.ceil(desiredSugarLb) * 1.99;
-		double costVanillaExtractOz = Math.ceil(desiredVanillaExtractOz) * 5.09;
-		double costEgg = Math.ceil(desiredEgg/12) * 1.79;
-		double costBanana = Math.ceil(desiredBanana) * 0.32;
-		double costChocolateChipCup = Math.ceil(desiredChocolateChipCup/2) * 4.19;
+		double bagOfFlour = Math.ceil(desiredAllPurposeFlourLb/5);
+		double costAllPurposeFlourLb =  bagOfFlour * 4.49;
+		
+		double boxOfBakingSoda = Math.ceil(desiredBakingSodaOz/16);
+		double costBakingSodaOz = boxOfBakingSoda * 1.09;
+		
+		double packageOfSalt = Math.ceil(desiredSaltOz/26);
+		double costSaltOz = packageOfSalt * 1.09;
+		
+		double packageOfButter = Math.ceil(desiredButterLb);
+		double costButterLb = packageOfButter * 3.79;
+		
+		double bagOfSugar = Math.ceil(desiredSugarLb);		
+		double costSugarLb = bagOfSugar * 1.99;
+		
+		double bottleOfVanillaExtract = Math.ceil(desiredVanillaExtractOz);
+		double costVanillaExtractOz = bottleOfVanillaExtract * 5.09;
+		
+		double cartonOfEgg = Math.ceil(desiredEgg/12);
+		double costEgg = cartonOfEgg * 1.79;
+		
+		double banana = Math.ceil(desiredBanana);
+		double costBanana = banana * 0.32;
+		
+		double bagOfChocolateChip = Math.ceil(desiredChocolateChipCup/2);
+		double costChocolateChipCup = bagOfChocolateChip * 4.19;
 		double totalCost = costAllPurposeFlourLb + costBakingSodaOz + costSaltOz 
 				+ costButterLb + costSugarLb + costVanillaExtractOz + costEgg 
 				+ costBanana + costChocolateChipCup;
-					
-		System.out.println("Total Cost = " + totalCost);
+		System.out.println("Shopping list for " + cookieCount + " cookie(s) and " + loafCount + " loaf(s) of bread:");
+		System.out.println( (int)bagOfFlour + " bag(s) of flour");
+		System.out.println( (int)packageOfSalt + " package(s) of salt");
+		System.out.println( (int)boxOfBakingSoda + " box(s) of baking soda");
+		System.out.println( (int)bottleOfVanillaExtract + " bottle(s) of vanilla extract");
+		System.out.println( (int)cartonOfEgg + " carton(s) of eggs");
+		System.out.println( (int)bagOfSugar + " bag(s) of sugar");
+		System.out.println( (int)packageOfButter + " package(s) of butter");
+		System.out.println( (int)banana + " banana(s)");
+		System.out.println( (int)bagOfChocolateChip + " bag(s) of chocolate chips");
+		System.out.println("Total cost: $" + totalCost);
 	}
 
 }

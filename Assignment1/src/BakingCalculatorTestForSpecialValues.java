@@ -52,6 +52,7 @@ public class BakingCalculatorTestForSpecialValues {
 		}
 		
 		int cookieCount = getCount(source, "int cookieCount");
+		System.out.println(cookieCount);
 		int loafCount = getCount(source, "int loafCount");
 		int[] ingredientsCount = null;
 		double finalPrice = -1;
