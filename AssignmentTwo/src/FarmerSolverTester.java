@@ -21,6 +21,7 @@ public class FarmerSolverTester {
 		}
 		String initialComment = "/* Write code below to modify the positions */";
 		int initialIndex = source.indexOf(initialComment);
+		
 		byte[][] initialHashes = {{-3, 15, 72, 98, 64, -100, -26, -98, 64, -32, 1, -96, 63, 111, -74, -106}};
 		String finalComment = "/* Write code above to modify the positions */";
 		int finalIndex = source.indexOf(finalComment);
@@ -41,6 +42,7 @@ public class FarmerSolverTester {
 			System.exit(-1);
 		}
 		MessageDigest md5 = MessageDigest.getInstance("MD5");
+		
 		int initialHashIndex;
 		for (initialHashIndex = 0; initialHashIndex < initialHashes.length; initialHashIndex++) {
 			if (Arrays.equals(md5.digest(source.substring(0, initialIndex).getBytes()), initialHashes[initialHashIndex])) {
@@ -136,7 +138,7 @@ public class FarmerSolverTester {
 		System.out.println("Running your solver...");
 		System.setOut(new PrintStream(stream));
 		try {
-			FarmerSolver.main(new String[0]);
+			FarmerSolver1.main(new String[0]);
 		} catch (UnsupportedOperationException e) {
 			System.setOut(oldOut);
 			System.out.println("Your program produced too much output, so I think it is in a loop! This is your output:");
