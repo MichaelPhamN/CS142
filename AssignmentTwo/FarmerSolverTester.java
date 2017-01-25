@@ -92,7 +92,7 @@ public class FarmerSolverTester {
 		if (userCode.matches("(?s).*\\scontinue.*")) {
 			System.out.println("It looks like you're using the continue statement! This shouldn't be necessary. Please solve the puzzle normally.");
 			System.exit(-1);
-		}		
+		}
 		if (userCode.matches("(?s).*\\sbreak.*")) {
 			containsBreak = true;
 		}
@@ -145,7 +145,7 @@ public class FarmerSolverTester {
 			System.setOut(oldOut);
 		}
 		
-		String output = new String(stream.toByteArray());		
+		String output = new String(stream.toByteArray());
 		System.out.println("OK, it looks like your program finished running!");
 		if (output.contains("!")) {
 			System.out.println("I do see an exclamation point which may indicate an error. Here is your output: ");
