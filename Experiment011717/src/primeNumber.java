@@ -10,19 +10,19 @@ public class primeNumber {
 				System.out.println(i + " is a prime");
 			else
 			{
-				int b = i - 1;				
-				while(b > 1){
+				int guessFactor = i - 1;				
+				while(guessFactor > 1){
 					
-					if(i % b == 0){					
+					if(i % guessFactor == 0){					
 						hasFactor = false;
 						break;
 					}
-					b--;
+					guessFactor--;
 				}
 				if(hasFactor)
 					System.out.println(i + " is a prime");
-				else
-					System.out.println(i + " is not a prime");
+//				else
+//					System.out.println(i + " is not a prime");
 			}
 		}
 		
