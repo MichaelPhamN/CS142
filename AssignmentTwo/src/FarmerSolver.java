@@ -1,5 +1,5 @@
 
-public class FarmerSolver {
+public class FarmerSolver1 {
 
 	public static void main(String[] args) {
 		// True if on left bank, false on right bank
@@ -52,6 +52,7 @@ public class FarmerSolver {
 			boolean nextWolfPosition = false;
 			boolean nextGoatPosition = true;
 			boolean nextCabbagePosition = false;
+
 			if(currentFarmerPosition && currentWolfPosition && currentGoatPosition && currentCabbagePosition){				
 				nextFarmerPosition = false;
 				nextWolfPosition = true;
