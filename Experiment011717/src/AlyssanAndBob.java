@@ -12,17 +12,18 @@ public class AlyssanAndBob {
 //		}else{
 //			System.out.println("Two of them have the same money in the pocket.");
 //		}
-		boolean dogOnBed = false;
-		boolean catOnBed = false;
-		if (dogOnBed || catOnBed) {
+		int[] a = {2, 3, 4};
+		for (int i = 0; i < a.length; i = i + 1) {
 
-			  System.out.println("A pet is on your bed");
-
-			} else {
-
-			  System.out.println("No pet is on your bed");
+			  a[i] = a[i]*a[i];
 
 			}
+		for (int j = 0; j < a.length; j = j + 1) {
+
+			  System.out.println(a[j]);
+
+			}
+ 
 	}
 
 }

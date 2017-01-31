@@ -1,6 +1,9 @@
 
-public class FarmerSolver1 {
-
+public class FarmerSolver {
+	/*
+	 * Student Name: Phuc Pham N
+	 * Student ID: 201206284
+	 */
 	public static void main(String[] args) {
 		// True if on left bank, false on right bank
 		// The testing/grading program will modify these to try out
@@ -58,6 +61,16 @@ public class FarmerSolver1 {
 				nextWolfPosition = true;
 				nextGoatPosition = false;
 				nextCabbagePosition = true;
+			}	
+			
+			if(!currentFarmerPosition && !currentWolfPosition && currentGoatPosition && currentCabbagePosition){
+				System.out.println("Invalid configuration");
+				break;
+			}
+			
+			if(!currentFarmerPosition && currentWolfPosition && currentGoatPosition && !currentCabbagePosition){
+				System.out.println("Invalid configuration");
+				break;
 			}
 			
 			if(!currentFarmerPosition && currentWolfPosition && !currentGoatPosition && currentCabbagePosition){
@@ -81,11 +94,21 @@ public class FarmerSolver1 {
 				nextCabbagePosition = false;
 			}
 			
+			if(currentFarmerPosition && currentWolfPosition && !currentGoatPosition && !currentCabbagePosition){
+				System.out.println("Invalid configuration");
+				break;				
+			}
+			
 			if(currentFarmerPosition && currentWolfPosition && currentGoatPosition && !currentCabbagePosition){
 				nextFarmerPosition = false;
 				nextWolfPosition = false;
 				nextGoatPosition = true;
 				nextCabbagePosition = false;
+			}
+			
+			if(!currentFarmerPosition && currentWolfPosition && currentGoatPosition && !currentCabbagePosition){
+				System.out.println("Invalid configuration");
+				break;
 			}
 			
 			if(!currentFarmerPosition && !currentWolfPosition && currentGoatPosition && !currentCabbagePosition){
