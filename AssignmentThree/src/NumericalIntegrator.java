@@ -7,7 +7,7 @@ public class NumericalIntegrator {
 			double[] arrY = new double[2]; 
 			int j = 0;
 			for(double x = i; x <= i + rangeInterval; x = x + rangeInterval){				
-				double y = x*x;						
+				double y = Math.pow(x,3)-x*x+3;						
 				arrY[j] = y;
 				j++;
 			}
@@ -17,18 +17,18 @@ public class NumericalIntegrator {
 	}
 	
 	public static void main(String[] args) {
-		double minX = -2.0;
-		double maxX = 2.0;		
-		int numPoints = 3;
+		double minX = -1.0;
+		double maxX = 1.0;		
+		int numPoints = 5;
 		double preArea = 0, nextArea = 0;
-		System.out.println(Area(minX, maxX, numPoints));
+		System.out.println("The Area = " + Area(minX, maxX, numPoints));
 		while(true){
 			int i = numPoints;
-			int j = numPoints + 1;
-			preArea = Area(minX, maxX, i);
-			nextArea = Area(minX, maxX, j);
-			if(nextArea - preArea <= 0.01){
-				System.out.println(i);
+			int j = numPoints + 1;			
+			preArea = Area(minX, maxX, i);			
+			nextArea = Area(minX, maxX, j);			
+			if(nextArea - preArea <= 0.01){				
+				System.out.println(i + " is the point which next area bigger than previous area 0.01");
 				break;
 			}else{
 				numPoints = numPoints + 1;
