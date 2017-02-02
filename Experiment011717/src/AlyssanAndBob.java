@@ -1,6 +1,26 @@
 
 public class AlyssanAndBob {
+	public static void a() {
+		  b();
+		  c();
+		  System.out.println("a");
+		}
 
+		public static void b() {
+		  System.out.println("b");
+		  c();
+		  d();
+		}
+
+		public static void c() {
+		  System.out.println("c");
+		}
+
+		public static void d() {
+		  System.out.println("d");
+		}
+
+		 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 //		double moneyOfAlyssa = 2;
@@ -12,18 +32,18 @@ public class AlyssanAndBob {
 //		}else{
 //			System.out.println("Two of them have the same money in the pocket.");
 //		}
-		int[] a = {2, 3, 4};
-		for (int i = 0; i < a.length; i = i + 1) {
-
-			  a[i] = a[i]*a[i];
-
-			}
-		for (int j = 0; j < a.length; j = j + 1) {
-
-			  System.out.println(a[j]);
-
-			}
- 
+//		int[] a = {2, 3, 4};
+//		for (int i = 0; i < a.length; i = i + 1) {
+//
+//			  a[i] = a[i]*a[i];
+//
+//			}
+//		for (int j = 0; j < a.length; j = j + 1) {
+//
+//			  System.out.println(a[j]);
+//
+//			}
+ a();
 	}
 
 }
