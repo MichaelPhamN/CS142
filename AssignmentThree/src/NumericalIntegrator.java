@@ -1,4 +1,3 @@
-
 public class NumericalIntegrator {
 	public static double Area(double MinX, double MaxX, int NumPoints){
 		double rangeInterval = (MaxX - MinX)/(NumPoints - 1);
@@ -21,7 +20,7 @@ public class NumericalIntegrator {
 		double maxX = 1.0;		
 		int numPoints = 5;
 		double preArea = 0, nextArea = 0;
-		System.out.println("The Area = " + Area(minX, maxX, numPoints));
+		System.out.println(Area(minX, maxX, numPoints));
 		while(true){
 			int i = numPoints;
 			int j = numPoints + 1;			
