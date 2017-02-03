@@ -27,8 +27,9 @@ public class NumericalIntegrator {
 			int j = numPoints + 1;			
 			preArea = Area(minX, maxX, i);			
 			nextArea = Area(minX, maxX, j);			
-			if(nextArea - preArea <= 0.01){				
-				System.out.println(i + " is the point which next area bigger than previous area at most 0.01");
+			double percentArea = nextArea/preArea;
+			if(0.9999 <= percentArea &&  percentArea <= 1.0001){				
+				System.out.println(i + " is the point which next area bigger than previous area at most 100.01%  and at less 99.99%");
 				break;
 			}else{
 				numPoints = numPoints + 1;
