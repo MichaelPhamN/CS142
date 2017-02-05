@@ -1,4 +1,3 @@
-
 public class NumericalIntegrator {
 	public static double Area(double MinX, double MaxX, int NumPoints){
 		double rangeInterval = (MaxX - MinX)/(NumPoints - 1);
@@ -20,15 +19,17 @@ public class NumericalIntegrator {
 		double minX = -1.0;
 		double maxX = 1.0;		
 		int numPoints = 5;
-		double preArea = 0, nextArea = 0;
-		System.out.println("The Area = " + Area(minX, maxX, numPoints));
+		double currentArea = 0, newArea = 0;
+		System.out.println(Area(minX, maxX, numPoints));
 		while(true){
 			int i = numPoints;
 			int j = numPoints + 1;			
-			preArea = Area(minX, maxX, i);			
-			nextArea = Area(minX, maxX, j);			
-			if(nextArea - preArea <= 0.01){				
-				System.out.println(i + " is the point which next area bigger than previous area at most 0.01");
+			currentArea = Area(minX, maxX, i);			
+			newArea = Area(minX, maxX, j);			
+			double percentArea = newArea/currentArea;
+			if(0.9999 <= percentArea &&  percentArea <= 1.0001){				
+				System.out.println(i + " is the point which next area bigger than previous area at most 100.01%  and at less 99.99%");
+				System.out.println("The Area which next area bigger than previous area at most 100.01%  and at less 99.99% is " + Area(minX, maxX, i));
 				break;
 			}else{
 				numPoints = numPoints + 1;
