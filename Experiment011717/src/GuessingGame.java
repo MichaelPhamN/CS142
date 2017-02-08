@@ -23,9 +23,29 @@ public class GuessingGame {
 		return count;
 	}
 	
+	public static int numCorrectDigitsInWrongPosistion(int[] code, int[] guess){
+		// Was this code element matched?
+		boolean[] wasMatched = new boolean[code.length];  
+		int count = 0;
+		// Look at each of the guess elements 
+		for(int i = 0; i< guess.length; i++){
+			// If this guess was a perfect match, skip it
+			if(guess[i] == code[i]) continue;
+			for(int j = 0; j < code.length; j++){
+				if(guess[i] == code[j] 
+						&& code[j] != guess[j]
+						&& !wasMatched[j]){
+					
+				}
+			}
+		}
+		return count;
+	}
+	
 	public static void main(String[] args) {		
 		int numColors = 6;
 		int length = 4;
+		int[] secretCode = generateSecretCode(4,6);
 		System.out.println(Arrays.toString(generateSecretCode(4,6)));
 		Scanner s = new Scanner(System.in);
 		System.out.println("Please enter a guess (" + length + " digits 1-" + numColors + ")");
@@ -43,7 +63,8 @@ public class GuessingGame {
 				}
 			}
 			if(isValid){
-				
+				System.out.println("# of black pegs: " + numCorrectDigitsPosition(secretCode, guess));
+				System.out.println("# of white pegs: " + numCorrectDigitsInWrongPosistion(secretCode, guess));
 			}
 		}else{
 			System.out.println("Your guess was not the correct length");
