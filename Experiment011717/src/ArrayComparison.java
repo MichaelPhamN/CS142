@@ -28,6 +28,16 @@ public class ArrayComparison {
 				return false;
 		return true;
 	}
+	
+	public static boolean contains(int[] a, int i){
+		if(a == null) return false;
+		if(a.length == 0) return false;
+		
+		for(int j = 0; j< a.length;j++)
+			if(a[j] == i) return true;
+		return false;
+	}
+	
 	public static void main(String[] args) {
 		boolean[] a = {true,false,true};
 		boolean[] b = {true,false,true};
@@ -43,6 +53,9 @@ public class ArrayComparison {
 		}else{
 			System.out.println("Not Equal");			
 		}
+		
+		int[] c = {1,2,3};
+		System.out.println(contains(c,4));
 	}
 
 }
