@@ -2,73 +2,82 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class GuessingGame {
-	public static int[] generateSecretCode(int length, int numberOfSymbols){
-		int[] secretCode = new int[length];
-		for(int i = 0; i< length; i++){			 
-			secretCode[i] = (int)(Math.random()*numberOfSymbols) + 1;
+
+	public static int[] createSecretCode(int length, int numColors) {
+		int[] code = new int[length];
+		for (int i = 0; i < length; i++) {
+			code[i] = (int)(Math.random()*numColors)+1;
 		}
-		
-		return secretCode;
+		return code;
 	}
 	
-	public static int numCorrectDigitsPosition(int[] code, int[] guess){
-		//Run through the two arrays
-		//If they have the same element in the same position, that's one more correct digit.
+	public static int countBlackPegs(int[] code, int[] guess) {
+		// Assume arrays are the same length.
+		// Loop through the elements of the arrays and
+		// count the ones that match.
 		int count = 0;
-		for(int i = 0; i < code.length; i++){			
-			if(code[i] == guess[i]){
-				count++;
+		for (int i = 0; i < code.length; i++) {
+			if (code[i] == guess[i]) {
+				count = count + 1;
 			}
 		}
 		return count;
 	}
 	
-	public static int numCorrectDigitsInWrongPosistion(int[] code, int[] guess){
-		// Was this code element matched?
-		boolean[] wasMatched = new boolean[code.length];  
+	public static int countWhitePegs(int[] code, int[] guess) {
+		boolean[] wasCodeDigitMatched = new boolean[code.length];
 		int count = 0;
-		// Look at each of the guess elements 
-		for(int i = 0; i< guess.length; i++){
-			// If this guess was a perfect match, skip it
-			if(guess[i] == code[i]) continue;
-			for(int j = 0; j < code.length; j++){
-				if(guess[i] == code[j] 
-						&& code[j] != guess[j]
-						&& !wasMatched[j]){
-					
+		// For each guess digit
+		for (int i = 0; i < guess.length; i++) {
+			// For each code digit
+			if (guess[i] == code[i]) continue; // Skip guess digits with black peg matches
+			for (int j = 0; j < code.length; j++) {
+				if (guess[i] == code[j] // If code and guess digit match 
+				&& !wasCodeDigitMatched[j] // This code digit wasn't matched
+				&& code[j] != guess[j]) { // Code digit doesn't have black peg match
+					wasCodeDigitMatched[j] = true; // Now that code digit is matched
+					count++; // Add one to the count
+					break; // Stop looking for matches! Go on to the next guess digit.
 				}
 			}
 		}
 		return count;
 	}
 	
-	public static void main(String[] args) {		
-		int numColors = 6;
+	
+	public static void main(String[] args) {
 		int length = 4;
-		int[] secretCode = generateSecretCode(4,6);
-		System.out.println(Arrays.toString(generateSecretCode(4,6)));
+		int differentDigits = 6;
+		int[] secretCode = createSecretCode(length, differentDigits);
 		Scanner s = new Scanner(System.in);
-		System.out.println("Please enter a guess (" + length + " digits 1-" + numColors + ")");
-		String input = s.nextLine();
-		if(input.length() == length){
-			char[] characters = input.toCharArray();
-			int[] guess = new int[length];
-			boolean isValid = true;
-			for(int i = 0; i< length; i++){
-				if(characters[i] >= '1' && characters[i] < '0'+numColors){
-
-				}else{
-					System.out.println("Character " + characters[i] + " is not a valid code digit !!!");
-					isValid = true;
+		// Loop forever
+		while (true) {
+			System.out.println("Please enter a guess ("+length+" digits ranging 1-"+differentDigits+")");
+			
+			String input = s.nextLine();
+			if (input.length() == length) {
+				char[] characters = input.toCharArray();
+				int[] guess = new int[length];
+				boolean allValid = true;
+				for (int i = 0; i < characters.length; i++) {
+					if (characters[i] >= '1' && characters[i] <= '0'+differentDigits) {
+						guess[i] = characters[i] -'0';
+					} else {
+						System.out.println(characters[i]+" is not a valid digit!");
+						allValid = false;
+					}
 				}
+				if (allValid) {
+					System.out.println("# of black pegs: "+countBlackPegs(secretCode, guess));
+					System.out.println("# of white pegs: "+countWhitePegs(secretCode, guess));
+					if (countBlackPegs(secretCode, guess) == secretCode.length) {
+						System.out.println("You won!");
+						break;
+					}
+				}
+			} else {
+				System.out.println("Your input was the wrong length!");
 			}
-			if(isValid){
-				System.out.println("# of black pegs: " + numCorrectDigitsPosition(secretCode, guess));
-				System.out.println("# of white pegs: " + numCorrectDigitsInWrongPosistion(secretCode, guess));
-			}
-		}else{
-			System.out.println("Your guess was not the correct length");
-		}
+		}		
 	}
-
 }
