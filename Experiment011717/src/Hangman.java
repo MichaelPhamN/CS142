@@ -1,9 +1,11 @@
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Random;
 
 /**
  * A guessing game where you must guess a word. Please fill out your name below:
  * 
- * Author:
+ * Author: Phuc Pham N
  * 
  * Please fill out the methods below and remove the "todo" comments. Then you'll
  * be able to play Hangman! The existing return values are stubs to make the
@@ -22,9 +24,8 @@ public class Hangman {
 	 *            Array of words
 	 * @return A randomly selected word
 	 */
-	public static String chooseWord(String[] words) {
-		// TODO Auto-generated method stub
-		return "";
+	public static String chooseWord(String[] words) {			
+		return words[new Random().nextInt(words.length)];
 	}
 
 	/**
@@ -41,7 +42,10 @@ public class Hangman {
 	 *         and you are still alive. False if you can't play!
 	 */
 	public static boolean canStillPlay(int mistakesLeft, boolean[] revealedLetters) {
-		// TODO Auto-generated method stub
+		if(mistakesLeft >= 0)
+			for(int i = 0; i < revealedLetters.length; i++)							
+				if(revealedLetters[i] == false) return true;
+		
 		return false;
 	}
 
@@ -59,8 +63,15 @@ public class Hangman {
 	 *         concatenation to build it!
 	 */
 	public static String wordSoFar(char[] word, boolean[] revealedLetters) {
-		// TODO Auto-generated method stub
-		return null;
+		String str = "";
+		for(int i = 0; i < revealedLetters.length; i++){
+			if(revealedLetters[i] == false){
+				str = str + "-";
+			}else{
+				str = str + Character.toString(word[i]);
+			}
+		}		
+		return str;
 	}
 
 	/**
@@ -81,7 +92,15 @@ public class Hangman {
 	 *         otherwise
 	 */
 	public static boolean makeGuess(char guess, char[] word, boolean[] revealedLetters) {
-		// TODO Auto-generated method stub
+		boolean checkGuess = false;
+		for(int i = 0; i < word.length; i++){
+			if(word[i] == guess){
+				revealedLetters[i] = true;
+				checkGuess = true;
+			}				
+		}
+		if(checkGuess)
+			return true;
 		return false;
 	}
 
@@ -97,14 +116,15 @@ public class Hangman {
 	 * @param args
 	 * @throws IOException
 	 */
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException {		
 		// A small dictionary of short words to guess.
 		String[] possibleWords = { "acorns", "baker", "camels", "denim", "embers", "fauna", "grapes", "heist", "igloos",
 				"jumpy", "koalas", "llamas", "mocha", "never", "otters", "pride", "quite", "rocky", "salads", "truck",
 				"under", "violas", "wrist", "yachts", "zebra" };
 		String chosenWord = chooseWord(possibleWords);
-		int mistakesLeft = 7;
-		boolean[] revealedLetters = new boolean[chosenWord.length()];
+//		System.out.println(chosenWord);
+		int mistakesLeft = 7;	
+		boolean[] revealedLetters = new boolean[chosenWord.length()];		
 		boolean[] guessedLetters = new boolean[26];
 		while (canStillPlay(mistakesLeft, revealedLetters)) {
 			char guess;
