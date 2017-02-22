@@ -154,12 +154,28 @@ public class RectangleFun {
 			for(int i = 0; i< recIntersection.length; i++){
 				sumSmallArea = sumSmallArea + recIntersection[i].height * recIntersection[i].width;
 			}
+			Rectangle[] substractedIntersection = new Rectangle[numberOfIntersect];
+			int numberOfSubstractedIntersection = 0;
 			if(numberOfIntersect > 0){				
 				for(int h = 0; h < numberOfIntersect - 1; h++){
 					for(int k = h + 1; k < numberOfIntersect; k++)
 						if(recIntersection[h].intersects(recIntersection[k])){
-							sumSmallArea = sumSmallArea - recIntersection[h].intersection(recIntersection[k]).width 
-									* recIntersection[h].intersection(recIntersection[k]).height;					
+							if(numberOfSubstractedIntersection == 0){
+								sumSmallArea = sumSmallArea - recIntersection[h].intersection(recIntersection[k]).width 
+										* recIntersection[h].intersection(recIntersection[k]).height;
+								recIntersection[numberOfSubstractedIntersection++] = recIntersection[h].intersection(recIntersection[k]);	
+							}else{
+								Rectangle rectSubtraction = new Rectangle();
+								rectSubtraction = recIntersection[h].intersection(recIntersection[k]);
+								for(int l = 0; l < numberOfSubstractedIntersection; l++){
+									if(rectSubtraction.equals(substractedIntersection[l])){
+										break;
+									}
+								}
+								for(int m = 0; m <numberOfSubstractedIntersection; m++){
+									sumSmallArea = sumSmallArea - recIntersection[m].height * recIntersection[m].width; 
+								}
+							}					
 						}
 				}
 			}
