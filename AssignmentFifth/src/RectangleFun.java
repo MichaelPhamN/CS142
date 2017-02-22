@@ -8,7 +8,9 @@ import java.util.Scanner;
  */
 
 /**
- * @author Admin
+ * @author Phuc Pham N
+ * SID 201206284
+ * Class 9:30 - 10:30
  *
  */
 public class RectangleFun {
@@ -129,26 +131,34 @@ public class RectangleFun {
 		}else{
 			Rectangle[] recIntersection = new Rectangle[countInterect];
 			int numberOfIntersect = 0;
-			int sumArea = 0;
+			int sumArea = 0;			
+			// Find total Area of all rectangles without minus intersection
+			for(int i = 0; i< rec.length; i++){
+				sumArea = sumArea + rec[i].height * rec[i].width;
+			}
+			int sumSmallArea = 0;
+			// Find small rectangles (they are intersection parts of rectangles )
 			for (int i = 0; i < rec.length -1; i++) {
-				for(int j = i+1; j < rec.length; j++){
+				for(int j = i+1; j < rec.length; j++){					
 					if(rec[i].intersects(rec[j])){
 						recIntersection[numberOfIntersect++] = rec[i].intersection(rec[j]);						
 					}
 				}
 			}
-//			for(int h = 0; h < ){
-//				
-//			}
-			if(numberOfIntersect > 0){
-				for(int k = 0; k < numberOfIntersect - 1; k++){
-					for(int l = k + 1; l < numberOfIntersect; l++){
-						
-					}
+			
+			for(int i = 0; i< recIntersection.length; i++){
+				sumSmallArea = sumSmallArea + recIntersection[i].height * recIntersection[i].width;
+			}
+			if(numberOfIntersect > 0){				
+				for(int h = 0; h < numberOfIntersect - 1; h++){
+					for(int k = h + 1; k < numberOfIntersect; k++)
+						if(recIntersection[h].intersects(recIntersection[k])){
+							sumSmallArea = sumSmallArea - recIntersection[h].intersection(recIntersection[k]).width 
+									* recIntersection[h].intersection(recIntersection[k]).height;					
+						}
 				}
 			}
-			
-			
+			System.out.println("Total area covered by all rectangles: " +  (sumArea - sumSmallArea));
 		}
 	}
 }
