@@ -1,5 +1,5 @@
 
-public class Circle {
+public class Circle extends Shape{
 	public double radius;
 	public double centerX, centerY;
 	public Circle(double CenterX, double CenterY, double radius){
@@ -11,6 +11,16 @@ public class Circle {
 	// where {x},{y}, {r} are the actual values
 	public String toString(){
 		return "({" + this.centerX + "}, {" + this.centerY + "}) radius {" + this.radius + "}";
+	}
+	
+	@Override
+	public double area(){
+		return radius * radius * Math.PI;
+	}
+	
+	@Override
+	public double periemeter(){
+		return 2 * Math.PI * radius; 
 	}
 	
 	public boolean equals(Object o){

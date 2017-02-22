@@ -14,6 +14,11 @@ import java.util.Scanner;
  *
  */
 public class RectangleFun {
+	public static Rectangle intectionRectangles(Rectangle[] rec){
+		Rectangle intersectRectangle = new Rectangle();
+		return intersectRectangle;
+	}
+	
 	public static boolean isInteger(String input){
 		if(input == null){
 			return false;
