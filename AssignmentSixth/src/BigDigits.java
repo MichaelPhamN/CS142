@@ -62,7 +62,7 @@ public class BigDigits {
 	 * representing the sum.
 	 */
 	public BigDigits plus(BigDigits d) {		
-		if(this.arrDigits.length > d.arrDigits.length){
+		if(this.arrDigits.length > d.arrDigits.length){			
 			byte[] tmp = new byte[this.arrDigits.length];			
 			if(d.arrDigits[0] == 0 && this.arrDigits[0] == 0){	
 				for (int i = 0; i < d.arrDigits.length; i++) {					
@@ -117,8 +117,8 @@ public class BigDigits {
 					}
 				}			
 			}	
-			System.out.println(Arrays.toString(this.arrDigits));
-			System.exit(0);
+//			System.out.println(Arrays.toString(this.arrDigits));
+//			System.exit(0);
 			return this;
 		}else if(this.arrDigits.length < d.arrDigits.length){
 			//Check lai cho nay
@@ -176,8 +176,8 @@ public class BigDigits {
 					}
 				}			
 			}
-			System.out.println(Arrays.toString(d.arrDigits));
-			System.exit(0);
+//			System.out.println(Arrays.toString(d.arrDigits));
+//			System.exit(0);
 			return d;
 		}else if(this.arrDigits.length == d.arrDigits.length){					
 			if(d.arrDigits[0] == 0 && this.arrDigits[0] == 0){
@@ -215,8 +215,8 @@ public class BigDigits {
 					}
 				}			
 			}	
-			System.out.println(Arrays.toString(this.arrDigits));
-			System.exit(0);
+//			System.out.println(Arrays.toString(this.arrDigits));
+//			System.exit(0);
 			return this;
 		}		
 		return null;

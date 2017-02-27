@@ -1,12 +1,12 @@
-import java.util.Arrays;
+//import java.util.Arrays;
 
 public class BigDigitsTest {
 
 	public static void main(String[] args) {
 		
 		// TODO Auto-generated method stub
-		BigDigits a = new BigDigits("999");
-		BigDigits b = new BigDigits("-998");
+		BigDigits a = new BigDigits("998");
+		BigDigits b = new BigDigits("-999");
 		byte[] tmp = new byte[10];
 //		System.out.println(Arrays.toString(tmp));
 		BigDigits c = a.plus(b);
