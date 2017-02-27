@@ -117,7 +117,7 @@ public class BigDigits {
 					}
 				}			
 			}	
-			System.out.println(Arrays.toString(d.arrDigits));
+			System.out.println(Arrays.toString(this.arrDigits));
 			System.exit(0);
 			return this;
 		}else if(this.arrDigits.length < d.arrDigits.length){
@@ -179,8 +179,45 @@ public class BigDigits {
 			System.out.println(Arrays.toString(d.arrDigits));
 			System.exit(0);
 			return d;
-		}else if(this.arrDigits.length == d.arrDigits.length){
-			
+		}else if(this.arrDigits.length == d.arrDigits.length){					
+			if(d.arrDigits[0] == 0 && this.arrDigits[0] == 0){
+				for (int i = 0; i < this.arrDigits.length; i++) {
+					this.arrDigits[this.arrDigits.length - i - 1] = (byte)(this.arrDigits[this.arrDigits.length - i - 1] + d.arrDigits[this.arrDigits.length - i - 1]);					
+					if(this.arrDigits[this.arrDigits.length - i - 1] > 9){												
+						this.arrDigits[this.arrDigits.length - i - 2] = (byte) (this.arrDigits[this.arrDigits.length - i - 2] + 1);
+						this.arrDigits[this.arrDigits.length - i - 1] = (byte) (this.arrDigits[this.arrDigits.length - i - 1]%10);						
+					}
+				}											
+			}else if(d.arrDigits[0] == -1 && this.arrDigits[0] == 0){
+				for (int i = 0; i < this.arrDigits.length - 1; i++) {					
+					if(this.arrDigits[this.arrDigits.length - i - 1] >= d.arrDigits[this.arrDigits.length - i - 1]){
+						this.arrDigits[this.arrDigits.length - i - 1] = (byte)(this.arrDigits[this.arrDigits.length - i - 1] - d.arrDigits[this.arrDigits.length - i - 1]);
+					}else{	
+						this.arrDigits[this.arrDigits.length - i - 2] = (byte) (this.arrDigits[this.arrDigits.length - i - 2] - 1);
+						this.arrDigits[this.arrDigits.length - i - 1] = (byte) ((this.arrDigits[this.arrDigits.length - i - 1] + 10) - d.arrDigits[this.arrDigits.length - i - 1]);
+					}
+				}
+			}else if(d.arrDigits[0] == 0 && this.arrDigits[0] == -1){
+				for (int i = 0; i < this.arrDigits.length-1; i++) {					
+					if(this.arrDigits[this.arrDigits.length - i - 1] >= d.arrDigits[this.arrDigits.length - i - 1]){
+						this.arrDigits[this.arrDigits.length - i - 1] = (byte)(this.arrDigits[this.arrDigits.length - i - 1] - d.arrDigits[this.arrDigits.length - i - 1]);
+					}else{	
+						this.arrDigits[this.arrDigits.length - i - 2] = (byte) (this.arrDigits[this.arrDigits.length - i - 2] - 1);
+						this.arrDigits[this.arrDigits.length - i - 1] = (byte) ((this.arrDigits[this.arrDigits.length - i - 1] + 10) - d.arrDigits[this.arrDigits.length - i - 1]);
+					}
+				}
+			}else if(d.arrDigits[0] == -1 && this.arrDigits[0] == -1){				
+				for (int i = 0; i < this.arrDigits.length-1; i++) {
+					this.arrDigits[this.arrDigits.length - i - 1] = (byte)(this.arrDigits[this.arrDigits.length - i - 1] + d.arrDigits[this.arrDigits.length - i - 1]);					
+					if(this.arrDigits[this.arrDigits.length - i - 1] > 9){												
+						this.arrDigits[this.arrDigits.length - i - 2] = (byte) (this.arrDigits[this.arrDigits.length - i - 2] + 1);
+						this.arrDigits[this.arrDigits.length - i - 1] = (byte) (this.arrDigits[this.arrDigits.length - i - 1]%10);						
+					}
+				}			
+			}	
+			System.out.println(Arrays.toString(this.arrDigits));
+			System.exit(0);
+			return this;
 		}		
 		return null;
 	}
