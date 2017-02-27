@@ -116,11 +116,14 @@ public class BigDigits {
 						this.arrDigits[this.arrDigits.length - i - 1] = (byte) (this.arrDigits[this.arrDigits.length - i - 1]%10);						
 					}
 				}			
-			}			
+			}	
+			System.out.println(Arrays.toString(d.arrDigits));
+			System.exit(0);
+			return this;
 		}else if(this.arrDigits.length < d.arrDigits.length){
 			//Check lai cho nay
-			byte[] tmp = new byte[d.arrDigits.length];			
-			if(d.arrDigits[0] == 0 && d.arrDigits[0] == 0){	
+			byte[] tmp = new byte[d.arrDigits.length];
+			if(this.arrDigits[0] == 0 && d.arrDigits[0] == 0){	
 				for (int i = 0; i < this.arrDigits.length; i++) {					
 					tmp[d.arrDigits.length - i - 1] = this.arrDigits[this.arrDigits.length - i - 1];					
 				}
@@ -131,7 +134,7 @@ public class BigDigits {
 						d.arrDigits[d.arrDigits.length - i - 1] = (byte) (d.arrDigits[d.arrDigits.length - i - 1]%10);						
 					}
 				}											
-			}else if(this.arrDigits[0] == -1 && d.arrDigits[0] == 0){
+			}else if(this.arrDigits[0] == -1 && d.arrDigits[0] == 0){				
 				tmp[0] = -1;
 				for (int i = 1; i < this.arrDigits.length; i++) {					
 					if((i+1) != this.arrDigits.length){
@@ -173,12 +176,13 @@ public class BigDigits {
 					}
 				}			
 			}
+			System.out.println(Arrays.toString(d.arrDigits));
+			System.exit(0);
+			return d;
 		}else if(this.arrDigits.length == d.arrDigits.length){
 			
-		}
-		System.out.println(Arrays.toString(this.arrDigits));
-		System.exit(0);
-		return this;
+		}		
+		return null;
 	}
 
 	/**
