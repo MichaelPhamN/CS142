@@ -1,4 +1,4 @@
-import java.util.Arrays;
+
 
 /**
  * This class represents an arbitrary sized integer based on an array of byte
@@ -197,7 +197,7 @@ public class BigDigits {
 						b.arrDigits[b.arrDigits.length - i - 2] = (byte) (b.arrDigits[b.arrDigits.length - i - 2] + 1);
 						b.arrDigits[b.arrDigits.length - i - 1] = (byte) (b.arrDigits[b.arrDigits.length - i - 1]%10);						
 					}
-				}											
+				}
 			}else if(d.arrDigits[0] == -1 && this.arrDigits[0] == 0){
 				byte checkGreater = -1;
 				for (int i = 2; i < this.arrDigits.length; i++) {
@@ -303,7 +303,7 @@ public class BigDigits {
 				}			
 			}
 		}		
-//		System.out.println(Arrays.toString(b.arrDigits));
+//		System.out.println("a");
 //		System.exit(0);
 		return b;
 	}
@@ -313,6 +313,7 @@ public class BigDigits {
 	 * written out (similar to the constructor argument)
 	 */
 	public String toString() {
+//		System.out.println(Arrays.toString(this.arrDigits));
 		String strNumber = "";
 		if(this.arrDigits[0] == -1)
 		{
@@ -325,7 +326,7 @@ public class BigDigits {
 					break;				 
 			}
 			for(int j = i; j < this.arrDigits.length; j++)
-				strNumber = strNumber + arrDigits[i];
+				strNumber = strNumber + arrDigits[j];
 		}else{
 			int i;
 			for (i = 1; i < this.arrDigits.length ; i++) {
@@ -334,8 +335,9 @@ public class BigDigits {
 				else
 					break;				 
 			}
+//			System.out.println(i);
 			for(int j = i; j < this.arrDigits.length; j++)
-				strNumber = strNumber + arrDigits[i];
+				strNumber = strNumber + arrDigits[j];
 		}		
 		return strNumber;
 	}
