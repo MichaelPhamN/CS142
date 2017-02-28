@@ -350,9 +350,9 @@ public class BigDigits {
 	 * @return -1, 0, or 1
 	 */
 	public byte compareTo(BigDigits d) {
-		byte compare = -1;
+		byte compare = 1;
 		if(this.arrDigits[0] == 0 && d.arrDigits[0] == -1){
-			compare = -1;
+			compare = 1;
 		}else if(this.arrDigits[0] == 0 && d.arrDigits[0] == 0){
 			int i;
 			for ( i = 2; i < this.arrDigits.length; i++) {
@@ -360,10 +360,10 @@ public class BigDigits {
 					continue;
 				else{
 					if(this.arrDigits[i] > d.arrDigits[i]){
-						compare = -1;
+						compare = 1;
 						break;
 					}else{
-						compare = 1;
+						compare = -1;
 						break;
 					}
 				}
@@ -378,10 +378,10 @@ public class BigDigits {
 					continue;
 				else{
 					if(this.arrDigits[i] > d.arrDigits[i]){
-						compare = 1;
+						compare = -1;
 						break;
 					}else{
-						compare = -1;
+						compare = 1;
 						break;
 					}
 				}
@@ -390,7 +390,7 @@ public class BigDigits {
 				compare = 0;
 			}
 		}else if(this.arrDigits[0] == -1 && d.arrDigits[0] == 0){
-			compare = 1;
+			compare = -1;
 		}
 			
 		return compare;
@@ -401,9 +401,24 @@ public class BigDigits {
 	 * with plus, don't modify this or d, create a new BigDigits object.
 	 */
 	public BigDigits times(BigDigits d) {
-		// FIXME This method should never return null if you're implementing the
-		// extra credit!
-		return null;
+		BigDigits b = new BigDigits();
+		
+		byte[][] tmp = new byte[d.arrDigits.length][(d.arrDigits.length + this.arrDigits.length) + 1];
+		for (int j = 0; j < d.arrDigits.length; j++) {
+			for (int i = 0; i < this.arrDigits.length; i++) {				
+					tmp[j][i+j] = (byte)(this.arrDigits[i] * d.arrDigits[j]);
+			}			
+		}
+		
+		
+		for(int i = 0; i < (d.arrDigits.length+this.arrDigits.length+1);i++ )
+		{
+			for(int j=0; j<d.arrDigits.length; j++){
+				b.arrDigits[i] = (byte)(b.arrDigits[i] +  tmp[i][j]);
+			}
+		}
+		
+		return b;
 	}
 
 }
