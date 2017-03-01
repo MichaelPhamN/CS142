@@ -7,8 +7,8 @@ public class BigDigitsTest {
 	public static void main(String[] args) {
 		
 		// TODO Auto-generated method stub
-		BigDigits a = new BigDigits("1111111111");
-		BigDigits b = new BigDigits("-111111");
+		BigDigits a = new BigDigits("143");
+		BigDigits b = new BigDigits("-642");
 		byte[] tmp = new byte[10];
 //		System.out.println(Arrays.toString(tmp));
 		BigDigits c = a.plus(b);
