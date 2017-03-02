@@ -1,4 +1,4 @@
-
+import java.util.Arrays;
 
 /**
  * This class represents an arbitrary sized integer based on an array of byte
@@ -404,12 +404,26 @@ public class BigDigits {
 		BigDigits b = new BigDigits();
 		
 		byte[][] tmp = new byte[d.arrDigits.length][(d.arrDigits.length + this.arrDigits.length) + 1];
-		for (int j = 0; j < d.arrDigits.length; j++) {
-			for (int i = 0; i < this.arrDigits.length; i++) {				
-					tmp[j][i+j] = (byte)(this.arrDigits[i] * d.arrDigits[j]);
-			}			
+		for (int j = d.arrDigits.length - 1; j >= 2 ; j--) {	
+			byte carry = 0;
+			for (int i = this.arrDigits.length - 1; i >= 2 ; i--) {
+					tmp[j][i+j] = (byte)(this.arrDigits[i] * d.arrDigits[j] + carry);
+					if(tmp[j][i+j] > 9){	
+						carry = 1;
+						tmp[j][i+j] = (byte) (tmp[j][i+j]%10);
+					}else{
+						carry = 0;
+					}					
+			}
+			
 		}
-		
+		for(int i = 0; i < d.arrDigits.length; i++){
+			for(int j = 0; j< d.arrDigits.length + this.arrDigits.length + 1; j++){
+				System.out.print(tmp[i][j] + " ");
+			}
+			System.out.println();
+		}
+		System.exit(0);
 		
 		for(int i = 0; i < (d.arrDigits.length+this.arrDigits.length+1);i++ )
 		{

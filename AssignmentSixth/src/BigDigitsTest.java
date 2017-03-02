@@ -8,13 +8,13 @@ public class BigDigitsTest {
 		
 		// TODO Auto-generated method stub
 
-		BigDigits a = new BigDigits("143");
-		BigDigits b = new BigDigits("-642");
+		BigDigits a = new BigDigits("123");
+		BigDigits b = new BigDigits("45");
 		byte[] tmp = new byte[10];
 
 //		System.out.println(Arrays.toString(tmp));
-		BigDigits c = a.plus(b);
-		System.out.println(c.toString());
+		BigDigits c = a.times(b);
+//		System.out.println(c.toString());
 //		System.out.println(c.toString());
 //		System.out.println(b.toString());
 //		byte a = 23;
