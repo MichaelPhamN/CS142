@@ -5,9 +5,8 @@ public class BigDigitsTest {
 	public static void main(String[] args) {
 		
 		// TODO Auto-generated method stub
-		BigDigits a = new BigDigits("998");
-		BigDigits b = new BigDigits("-999");
-		byte[] tmp = new byte[10];
+		BigDigits a = new BigDigits("789");
+		BigDigits b = new BigDigits("-123456");		
 //		System.out.println(Arrays.toString(tmp));
 		BigDigits c = a.plus(b);
 //		System.out.println(c.toString());
