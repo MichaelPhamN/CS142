@@ -45,19 +45,19 @@ public class BigDigitsSimpleTest {
 		if (!"1467".equals(String.valueOf(cpd))) {
 			System.out.println("678 + 789 = 1467 but your code says " + cpd);
 		}
-//		if (a.compareTo(a2) != 0) {
-//			System.out.println("Your code says 123 does not equal 123");
-//		}
-//		if (b.compareTo(a) != 1) {
-//			System.out.println("Your code says 456 is not greater than 123");
-//		}
-//		BigDigits epf = e.plus(f);
-//		if (!eBI.add(fBI).toString().equals(String.valueOf(epf))) {
-//			System.out.println(eBI + " + " + fBI + " = " + eBI.add(fBI) + " but your code says " + epf);
-//		}
-//		if (e.compareTo(f) != -1) {
-//			System.out.println("Your code says " + eBI + " is not less than " + fBI);
-//		}
+		if (a.compareTo(a2) != 0) {
+			System.out.println("Your code says 123 does not equal 123");
+		}
+		if (b.compareTo(a) != 1) {
+			System.out.println("Your code says 456 is not greater than 123");
+		}
+		BigDigits epf = e.plus(f);
+		if (!eBI.add(fBI).toString().equals(String.valueOf(epf))) {
+			System.out.println(eBI + " + " + fBI + " = " + eBI.add(fBI) + " but your code says " + epf);
+		}
+		if (e.compareTo(f) != -1) {
+			System.out.println("Your code says " + eBI + " is not less than " + fBI);
+		}
 		String source = null;
 		try {
 			source = new String(Files.readAllBytes(Paths.get("src" + File.separator + "BigDigits.java")));

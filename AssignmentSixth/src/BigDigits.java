@@ -1,4 +1,4 @@
-import java.util.Arrays;
+
 
 /**
  * This class represents an arbitrary sized integer based on an array of byte
@@ -63,7 +63,7 @@ public class BigDigits {
 	 */
 	public BigDigits plus(BigDigits d) {
 		BigDigits b = new BigDigits();
-				
+		
 		if(this.arrDigits.length > d.arrDigits.length){
 			// copy this
 			b.arrDigits = new byte[this.arrDigits.length];	
@@ -186,15 +186,18 @@ public class BigDigits {
 				}			
 			}
 		}else if(this.arrDigits.length == d.arrDigits.length){
-			b.arrDigits = new byte[this.arrDigits.length];
-			if(d.arrDigits[0] == 0 && this.arrDigits[0] == 0){
+			if(d.arrDigits[0] == 0 && this.arrDigits[0] == 0){				
+				b.arrDigits = new byte[this.arrDigits.length];	
 				for (int i = 0; i < this.arrDigits.length; i++) {
-					b.arrDigits[this.arrDigits.length - i - 1] = (byte)(this.arrDigits[this.arrDigits.length - i - 1] + d.arrDigits[this.arrDigits.length - i - 1]);					
-					if(b.arrDigits[this.arrDigits.length - i - 1] > 9){												
-						b.arrDigits[this.arrDigits.length - i - 2] = (byte) (this.arrDigits[this.arrDigits.length - i - 2] + 1);
-						b.arrDigits[this.arrDigits.length - i - 1] = (byte) (this.arrDigits[this.arrDigits.length - i - 1]%10);						
+					b.arrDigits[i] = this.arrDigits[i];
+				}
+				for (int i = 0; i < this.arrDigits.length; i++) {
+					b.arrDigits[b.arrDigits.length - i - 1] = (byte)(b.arrDigits[b.arrDigits.length - i - 1] + d.arrDigits[b.arrDigits.length - i - 1]);					
+					if(b.arrDigits[b.arrDigits.length - i - 1] > 9){												
+						b.arrDigits[b.arrDigits.length - i - 2] = (byte) (b.arrDigits[b.arrDigits.length - i - 2] + 1);
+						b.arrDigits[b.arrDigits.length - i - 1] = (byte) (b.arrDigits[b.arrDigits.length - i - 1]%10);						
 					}
-				}											
+				}
 			}else if(d.arrDigits[0] == -1 && this.arrDigits[0] == 0){
 				byte checkGreater = -1;
 				for (int i = 2; i < this.arrDigits.length; i++) {
@@ -211,41 +214,97 @@ public class BigDigits {
 					}
 				}				
 				if(checkGreater == 1){
-					for (int i = 0; i < this.arrDigits.length-1; i++) {					
-						if(this.arrDigits[this.arrDigits.length - i - 1] >= d.arrDigits[this.arrDigits.length - i - 1]){
-							b.arrDigits[this.arrDigits.length - i - 1] = (byte)(this.arrDigits[this.arrDigits.length - i - 1] - d.arrDigits[this.arrDigits.length - i - 1]);
+					b.arrDigits = new byte[this.arrDigits.length];	
+					for (int i = 0; i < this.arrDigits.length; i++) {
+						b.arrDigits[i] = this.arrDigits[i];
+					}
+					for (int i = 0; i < b.arrDigits.length-1; i++) {					
+						if(b.arrDigits[b.arrDigits.length - i - 1] >= d.arrDigits[b.arrDigits.length - i - 1]){
+							b.arrDigits[b.arrDigits.length - i - 1] = (byte)(b.arrDigits[b.arrDigits.length - i - 1] - d.arrDigits[d.arrDigits.length - i - 1]);
 						}else{	
-							b.arrDigits[this.arrDigits.length - i - 2] = (byte) (this.arrDigits[this.arrDigits.length - i - 2] - 1);
-							b.arrDigits[this.arrDigits.length - i - 1] = (byte) ((this.arrDigits[this.arrDigits.length - i - 1] + 10) - d.arrDigits[this.arrDigits.length - i - 1]);
+							b.arrDigits[b.arrDigits.length - i - 2] = (byte) (b.arrDigits[b.arrDigits.length - i - 2] - 1);
+							b.arrDigits[b.arrDigits.length - i - 1] = (byte) ((b.arrDigits[b.arrDigits.length - i - 1] + 10) - d.arrDigits[d.arrDigits.length - i - 1]);
 						}
 					}
-				}else if(checkGreater == -1){					
+				}else if(checkGreater == -1){	
+					b.arrDigits = new byte[d.arrDigits.length];	
+					for (int i = 0; i < d.arrDigits.length; i++) {
+						b.arrDigits[i] = d.arrDigits[i];
+					}
 					for (int i = 0; i < this.arrDigits.length-1; i++) {					
-						if(d.arrDigits[d.arrDigits.length - i - 1] >= this.arrDigits[this.arrDigits.length - i - 1]){
-							d.arrDigits[d.arrDigits.length - i - 1] = (byte)(d.arrDigits[d.arrDigits.length - i - 1] - this.arrDigits[this.arrDigits.length - i - 1]);
+						if(b.arrDigits[b.arrDigits.length - i - 1] >= this.arrDigits[this.arrDigits.length - i - 1]){
+							b.arrDigits[b.arrDigits.length - i - 1] = (byte)(b.arrDigits[b.arrDigits.length - i - 1] - this.arrDigits[this.arrDigits.length - i - 1]);
 						}else{	
-							System.out.println(d.arrDigits[d.arrDigits.length - i - 2] - 1);
-							d.arrDigits[d.arrDigits.length - i - 2] = (byte) (d.arrDigits[d.arrDigits.length - i - 2] - 1);
-							d.arrDigits[d.arrDigits.length - i - 1] = (byte) ((d.arrDigits[d.arrDigits.length - i - 1] + 10) - this.arrDigits[this.arrDigits.length - i - 1]);
+//							System.out.println(d.arrDigits[d.arrDigits.length - i - 2] - 1);
+							b.arrDigits[b.arrDigits.length - i - 2] = (byte) (b.arrDigits[b.arrDigits.length - i - 2] - 1);
+							b.arrDigits[b.arrDigits.length - i - 1] = (byte) ((b.arrDigits[b.arrDigits.length - i - 1] + 10) - this.arrDigits[this.arrDigits.length - i - 1]);
 						}
 					}
-					System.out.println(Arrays.toString(d.arrDigits));
-					System.exit(0);
+//					System.out.println(Arrays.toString(d.arrDigits));
+//					System.exit(0);
 				}
-			}else if(d.arrDigits[0] == 0 && this.arrDigits[0] == -1){				
+			}else if(d.arrDigits[0] == 0 && this.arrDigits[0] == -1){	
+				byte checkGreater = -1;
+				for (int i = 2; i < this.arrDigits.length; i++) {
+					if(this.arrDigits[i] == d.arrDigits[i])
+						continue;
+					else{
+						if(this.arrDigits[i] > d.arrDigits[i]){
+							checkGreater = 1;
+							break;
+						}else{
+							checkGreater = -1;
+							break;
+						}
+					}
+				}				
+				if(checkGreater == 1){
+					b.arrDigits = new byte[this.arrDigits.length];	
+					for (int i = 0; i < this.arrDigits.length; i++) {
+						b.arrDigits[i] = this.arrDigits[i];
+					}
+					for (int i = 0; i < b.arrDigits.length-1; i++) {					
+						if(b.arrDigits[b.arrDigits.length - i - 1] >= d.arrDigits[b.arrDigits.length - i - 1]){
+							b.arrDigits[b.arrDigits.length - i - 1] = (byte)(b.arrDigits[b.arrDigits.length - i - 1] - d.arrDigits[d.arrDigits.length - i - 1]);
+						}else{	
+							b.arrDigits[b.arrDigits.length - i - 2] = (byte) (b.arrDigits[b.arrDigits.length - i - 2] - 1);
+							b.arrDigits[b.arrDigits.length - i - 1] = (byte) ((b.arrDigits[b.arrDigits.length - i - 1] + 10) - d.arrDigits[d.arrDigits.length - i - 1]);
+						}
+					}
+				}else if(checkGreater == -1){	
+					b.arrDigits = new byte[d.arrDigits.length];	
+					for (int i = 0; i < d.arrDigits.length; i++) {
+						b.arrDigits[i] = d.arrDigits[i];
+					}
+					for (int i = 0; i < this.arrDigits.length-1; i++) {					
+						if(b.arrDigits[b.arrDigits.length - i - 1] >= this.arrDigits[this.arrDigits.length - i - 1]){
+							b.arrDigits[b.arrDigits.length - i - 1] = (byte)(b.arrDigits[b.arrDigits.length - i - 1] - this.arrDigits[this.arrDigits.length - i - 1]);
+						}else{	
+//							System.out.println(d.arrDigits[d.arrDigits.length - i - 2] - 1);
+							b.arrDigits[b.arrDigits.length - i - 2] = (byte) (b.arrDigits[b.arrDigits.length - i - 2] - 1);
+							b.arrDigits[b.arrDigits.length - i - 1] = (byte) ((b.arrDigits[b.arrDigits.length - i - 1] + 10) - this.arrDigits[this.arrDigits.length - i - 1]);
+						}
+					}
+//					System.out.println(Arrays.toString(d.arrDigits));
+//					System.exit(0);
+				}
+			}else if(d.arrDigits[0] == -1 && this.arrDigits[0] == -1){	
 				
-			}else if(d.arrDigits[0] == -1 && this.arrDigits[0] == -1){				
-				for (int i = 0; i < this.arrDigits.length-1; i++) {
-					b.arrDigits[this.arrDigits.length - i - 1] = (byte)(this.arrDigits[this.arrDigits.length - i - 1] + d.arrDigits[this.arrDigits.length - i - 1]);					
-					if(b.arrDigits[this.arrDigits.length - i - 1] > 9){												
-						b.arrDigits[this.arrDigits.length - i - 2] = (byte) (this.arrDigits[this.arrDigits.length - i - 2] + 1);
-						b.arrDigits[this.arrDigits.length - i - 1] = (byte) (this.arrDigits[this.arrDigits.length - i - 1]%10);						
+				b.arrDigits = new byte[this.arrDigits.length];	
+				for (int i = 0; i < this.arrDigits.length; i++) {
+					b.arrDigits[i] = this.arrDigits[i];
+				}
+				for (int i = 0; i < b.arrDigits.length-1; i++) {
+					b.arrDigits[b.arrDigits.length - i - 1] = (byte)(b.arrDigits[b.arrDigits.length - i - 1] + d.arrDigits[b.arrDigits.length - i - 1]);					
+					if(b.arrDigits[b.arrDigits.length - i - 1] > 9){												
+						b.arrDigits[b.arrDigits.length - i - 2] = (byte) (b.arrDigits[b.arrDigits.length - i - 2] + 1);
+						b.arrDigits[b.arrDigits.length - i - 1] = (byte) (b.arrDigits[b.arrDigits.length - i - 1]%10);						
 					}
 				}			
 			}
 		}		
-		System.out.println(Arrays.toString(b.arrDigits));
-		System.exit(0);
+//		System.out.println("a");
+//		System.exit(0);
 		return b;
 	}
 
@@ -254,17 +313,31 @@ public class BigDigits {
 	 * written out (similar to the constructor argument)
 	 */
 	public String toString() {
+//		System.out.println(Arrays.toString(this.arrDigits));
 		String strNumber = "";
 		if(this.arrDigits[0] == -1)
 		{
 			strNumber = strNumber + "-";
-			for (int i = 1; i < this.arrDigits.length ; i++) {
-				strNumber = strNumber + arrDigits[i]; 
+			int i;
+			for (i = 1; i < this.arrDigits.length ; i++) {
+				if(this.arrDigits[i] == 0)
+					continue;
+				else
+					break;				 
 			}
+			for(int j = i; j < this.arrDigits.length; j++)
+				strNumber = strNumber + arrDigits[j];
 		}else{
-			for (int i = 1; i < this.arrDigits.length ; i++) {
-				strNumber = strNumber + arrDigits[i]; 
+			int i;
+			for (i = 1; i < this.arrDigits.length ; i++) {
+				if(this.arrDigits[i] == 0)
+					continue;
+				else
+					break;				 
 			}
+//			System.out.println(i);
+			for(int j = i; j < this.arrDigits.length; j++)
+				strNumber = strNumber + arrDigits[j];
 		}		
 		return strNumber;
 	}
@@ -277,8 +350,50 @@ public class BigDigits {
 	 * @return -1, 0, or 1
 	 */
 	public byte compareTo(BigDigits d) {
-		// FIXME This method should only return 0 if this is equal to d!
-		return 0;
+		byte compare = 1;
+		if(this.arrDigits[0] == 0 && d.arrDigits[0] == -1){
+			compare = 1;
+		}else if(this.arrDigits[0] == 0 && d.arrDigits[0] == 0){
+			int i;
+			for ( i = 2; i < this.arrDigits.length; i++) {
+				if(this.arrDigits[i] == d.arrDigits[i])
+					continue;
+				else{
+					if(this.arrDigits[i] > d.arrDigits[i]){
+						compare = 1;
+						break;
+					}else{
+						compare = -1;
+						break;
+					}
+				}
+			}
+			if( i == this.arrDigits.length){
+				compare = 0;
+			}
+		}else if(this.arrDigits[0] == -1 && d.arrDigits[0] == -1){
+			int i;
+			for ( i = 2; i < this.arrDigits.length; i++) {
+				if(this.arrDigits[i] == d.arrDigits[i])
+					continue;
+				else{
+					if(this.arrDigits[i] > d.arrDigits[i]){
+						compare = -1;
+						break;
+					}else{
+						compare = 1;
+						break;
+					}
+				}
+			}
+			if( i == this.arrDigits.length){
+				compare = 0;
+			}
+		}else if(this.arrDigits[0] == -1 && d.arrDigits[0] == 0){
+			compare = -1;
+		}
+			
+		return compare;
 	}
 
 	/**
@@ -286,9 +401,24 @@ public class BigDigits {
 	 * with plus, don't modify this or d, create a new BigDigits object.
 	 */
 	public BigDigits times(BigDigits d) {
-		// FIXME This method should never return null if you're implementing the
-		// extra credit!
-		return null;
+		BigDigits b = new BigDigits();
+		
+		byte[][] tmp = new byte[d.arrDigits.length][(d.arrDigits.length + this.arrDigits.length) + 1];
+		for (int j = 0; j < d.arrDigits.length; j++) {
+			for (int i = 0; i < this.arrDigits.length; i++) {				
+					tmp[j][i+j] = (byte)(this.arrDigits[i] * d.arrDigits[j]);
+			}			
+		}
+		
+		
+		for(int i = 0; i < (d.arrDigits.length+this.arrDigits.length+1);i++ )
+		{
+			for(int j=0; j<d.arrDigits.length; j++){
+				b.arrDigits[i] = (byte)(b.arrDigits[i] +  tmp[i][j]);
+			}
+		}
+		
+		return b;
 	}
 
 }
