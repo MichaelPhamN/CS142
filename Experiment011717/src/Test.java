@@ -1,18 +1,12 @@
-import java.util.Arrays;
-
 public class Test {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		String number = "1234567";
-		byte[] digits = new byte[number.length() - 1];
-
-for (int i = 1; i < digits.length; i++) {
-
-  digits[i] = (byte)(number.charAt(i-1) - '0');
-
-}
-		System.out.println(Arrays.toString(digits));
+		double a = 3 * (-1) + 7 - 5/2;
+		System.out.println(a);
+		System.out.println(2+2 + "(2+2)" + 2 + (2+2));
+		System.out.println(13/3 - 27/5*0.5 + (7.5 -6));
+		System.out.println(2%11%2 + 11%2 + 2);
+		System.out.println((5/3 == 1 && 10 < 4 + 5) != false);
 	}
 
 }
