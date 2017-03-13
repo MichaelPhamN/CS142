@@ -1,11 +1,11 @@
+import java.util.Arrays;
 
 public class Triangle extends Polygon{
 	private double x1, y1;
 	private double x2, y2;
 	private double x3, y3;	
-	private double xCenter, yCenter;
 	
-	public Triangle(double x1, double y1, double x2, double y2, double x3, double y3){
+	public Triangle(double x1, double y1, double x2, double y2, double x3, double y3){		
 		super((x1 + x2 + x3)/3, (y1 + y2 + y3)/3);
 		this.x1 = x1;
 		this.y1 = y1;
@@ -15,6 +15,7 @@ public class Triangle extends Polygon{
 		
 		this.x3 = x3;
 		this.y3 = y3;
+//		throw new IllegalArgumentException();
 	}
 	
 	public double getCenterX(){
@@ -32,12 +33,46 @@ public class Triangle extends Polygon{
 	
 	@Override
 	public double getPointX(int point) {
-		return xCenter;
+		double[][] points = new double[3][2];
+		double tmpX, tmpY;
+		points[0][0] = this.x1;
+		points[0][1] = this.y1;
+		
+		points[1][0] = this.x2;
+		points[1][1] = this.y2;
+		
+		points[2][0] = this.x3;
+		points[2][1] = this.y3;		
+		for(int i = 0; i <3; i++){
+			int maxX = i;
+			for(int j = i + 1; j <3; j++){
+				if(points[maxX][0] < points[j][0])
+				{					
+					maxX = j;
+				}else if(points[maxX][0] == points[j][0]){
+					if(points[maxX][1] > points[j][1]){
+						maxX = j;
+					}
+				}
+			}
+			tmpX = points[i][0];
+			tmpY = points[i][1];
+			points[i][0] = points[maxX][0];
+			points[i][1] = points[maxX][1];
+			points[maxX][0] = tmpX;
+			points[maxX][1] = tmpY;
+			
+		}
+		System.out.println(Arrays.toString(points[0]));
+		System.exit(0);
+//		throw new IllegalArgumentException();		
+		return 0;
 	}
 	
 	@Override
 	public double getPointY(int point) {
-		return yCenter;
+		
+		throw new IllegalArgumentException();
 	}
 	
 	@Override 
@@ -56,6 +91,10 @@ public class Triangle extends Polygon{
 	
 	@Override
 	public void scale(double scaleFactor){
+		if (scaleFactor <= 0) {
+			throw new IllegalArgumentException();
+		}
+		
 		this.x1 = super.getCenterX() - (super.getCenterX() - this.x1)*scaleFactor;
 		this.y1 = super.getCenterY() - (super.getCenterY() - this.y1)*scaleFactor;
 		
