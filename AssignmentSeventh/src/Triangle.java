@@ -17,13 +17,13 @@ public class Triangle extends Polygon{
 		this.y3 = y3;
 	}
 	
-//	public double getCenterX(int point){
-//		
-//	}
-//	
-//	public double getCenterY(int point){
-//		
-//	}
+	public double getCenterX(){
+		return super.getCenterX();
+	}
+	
+	public double getCenterY(){
+		return super.getCenterY();
+	}
 	
 	@Override
 	public int pointCount() {
@@ -56,22 +56,14 @@ public class Triangle extends Polygon{
 	
 	@Override
 	public void scale(double scaleFactor){
-		double[] scalePointXs = new double[3];
-		double[] scalePointYs = new double[3];
-		scalePointXs[0] = (super.getCenterX() - this.x1)*scaleFactor + super.getCenterX();
-		scalePointYs[0] = (super.getCenterY() - this.y1)*scaleFactor + super.getCenterY();
-		System.out.println(scalePointXs[0]);
-		System.out.println(scalePointYs[0]);
+		this.x1 = super.getCenterX() - (super.getCenterX() - this.x1)*scaleFactor;
+		this.y1 = super.getCenterY() - (super.getCenterY() - this.y1)*scaleFactor;
 		
-		scalePointXs[1] = (super.getCenterX() - this.x2)*scaleFactor + super.getCenterX();
-		scalePointYs[1] = (super.getCenterY() - this.y2)*scaleFactor + super.getCenterY();
-		System.out.println(scalePointXs[1]);
-		System.out.println(scalePointYs[1]);
+		this.x2 = super.getCenterX() - (super.getCenterX() - this.x2)*scaleFactor;
+		this.y2 = super.getCenterY() - (super.getCenterY() - this.y2)*scaleFactor;
 		
-		scalePointXs[2] = (super.getCenterX() - this.x3)*scaleFactor + super.getCenterX();
-		scalePointYs[2] = (super.getCenterY() - this.y3)*scaleFactor + super.getCenterY();
-		System.out.println(scalePointXs[2]);
-		System.out.println(scalePointYs[2]);
+		this.x3 = super.getCenterX() - (super.getCenterX() - this.x3)*scaleFactor;
+		this.y3 = super.getCenterY()- (super.getCenterY() - this.y3)*scaleFactor;
 	}
 	
 }

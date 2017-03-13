@@ -81,8 +81,8 @@ public class TriangleTest {
 				System.out.println("Moving to (0, 0)");
 				t.move(0, 0);
 				allOK = allOK && check("New area", t.area(), areas[i]);
-//				allOK = allOK && check("New perimeter", t.perimeter(), perimeters[i]);
-//				allOK = allOK && checkPoints(t, newPointXs[i], newPointYs[i]);
+				allOK = allOK && check("New perimeter", t.perimeter(), perimeters[i]);
+				allOK = allOK && checkPoints(t, newPointXs[i], newPointYs[i]);
 				if (allOK) {
 					okCount++;
 					System.out.println("All OK for this triangle. Checking scale extra credit. Moving to (-1, -1)");
