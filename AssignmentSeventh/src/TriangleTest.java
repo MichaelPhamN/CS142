@@ -79,7 +79,7 @@ public class TriangleTest {
 				allOK = allOK && check("Center x", t.getCenterX(), centerXs[i]);
 				allOK = allOK && check("Center y", t.getCenterY(), centerYs[i]);
 				System.out.println("Moving to (0, 0)");
-				t.move(0, 0);
+				t.move(0, 0);				
 				allOK = allOK && check("New area", t.area(), areas[i]);
 				allOK = allOK && check("New perimeter", t.perimeter(), perimeters[i]);
 				allOK = allOK && checkPoints(t, newPointXs[i], newPointYs[i]);
@@ -87,6 +87,14 @@ public class TriangleTest {
 					okCount++;
 					System.out.println("All OK for this triangle. Checking scale extra credit. Moving to (-1, -1)");
 					t.move(-1, -1);
+					System.out.println(t.getCenterX() + "==================================");
+					System.out.println(t.getCenterY() + "==================================");
+					System.out.println(t.getPointX(0) + "==================================");
+					System.out.println(t.getPointY(0) + "==================================");
+					System.out.println(t.getPointX(1) + "==================================");
+					System.out.println(t.getPointY(1) + "==================================");
+					System.out.println(t.getPointX(2) + "==================================");
+					System.out.println(t.getPointY(2) + "==================================");
 					System.out.println("Scaling by "+scaleFactor[i]);
 					t.scale(scaleFactor[i]);
 					allOK = allOK && check("Scaled area", t.area(), areas[i]*scaleFactor[i]*scaleFactor[i]);
