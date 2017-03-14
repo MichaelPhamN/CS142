@@ -43,30 +43,42 @@ public class Triangle extends Polygon{
 		
 		points[2][0] = this.x3;
 		points[2][1] = this.y3;		
-		for(int i = 0; i <3; i++){
-			int maxX = i;
+		for(int i = 0; i <2; i++){			
 			for(int j = i + 1; j <3; j++){
-				if(points[maxX][0] < points[j][0])
+				if(points[i][0] > points[j][0])
 				{					
-					maxX = j;
-				}else if(points[maxX][0] == points[j][0]){
-					if(points[maxX][1] > points[j][1]){
-						maxX = j;
+					tmpX = points[i][0];
+					tmpY = points[i][1];
+					points[i][0] = points[j][0];
+					points[i][1] = points[j][1];
+					points[j][0] = tmpX;
+					points[j][1] = tmpY;				
+				}else if(points[i][0] == points[j][0]){
+					if(points[i][1] > points[j][1]){
+						tmpX = points[j][0];
+						tmpY = points[j][1];
+						points[j][0] = points[i][0];
+						points[j][1] = points[i][1];
+						points[i][0] = tmpX;
+						points[i][1] = tmpY;
 					}
-				}
+				}				
 			}
-			tmpX = points[i][0];
-			tmpY = points[i][1];
-			points[i][0] = points[maxX][0];
-			points[i][1] = points[maxX][1];
-			points[maxX][0] = tmpX;
-			points[maxX][1] = tmpY;
+			
 			
 		}
-		System.out.println(Arrays.toString(points[0]));
-		System.exit(0);
-//		throw new IllegalArgumentException();		
-		return 0;
+		if(point == 0){
+			int xStart = -1;
+			for(int i = 0; i < 3; i++){
+				if(points[i][0] == this.x1 && points[i][1] == this.y1)
+				{
+					xStart = i;
+					break;
+				}
+			}
+			if(xStart == 0)
+				return points[0][0];			
+		}
 	}
 	
 	@Override
