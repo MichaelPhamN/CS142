@@ -79,6 +79,8 @@ public class Triangle extends Polygon{
 			if(xStart == 0)
 				return points[0][0];			
 		}
+		
+		
 		return 0;
 	}
 	
