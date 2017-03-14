@@ -7,6 +7,7 @@ public class Triangle extends Polygon{
 	
 	public Triangle(double x1, double y1, double x2, double y2, double x3, double y3){		
 		super((x1 + x2 + x3)/3, (y1 + y2 + y3)/3);
+		
 		this.x1 = x1;
 		this.y1 = y1;
 		
@@ -31,62 +32,78 @@ public class Triangle extends Polygon{
 		return 3;
 	}
 	
+	public boolean isClockwise(double x1, double y1, double x2, double y2, double x3, double y3)
+	{		
+		double sum = 0;
+		sum = sum + (x2 - x1) * (y2 + y1) + (x3 - x2) * (y3 + y2);		
+		if(sum > 0)
+			return true;
+		else
+			return false;
+	}
+	
 	@Override
 	public double getPointX(int point) {
-		double[][] points = new double[3][2];
-		double tmpX, tmpY;
-		points[0][0] = this.x1;
-		points[0][1] = this.y1;
+		double newX1, newX2, newX3;
 		
-		points[1][0] = this.x2;
-		points[1][1] = this.y2;
+		double distanceMoveCenterX;
 		
-		points[2][0] = this.x3;
-		points[2][1] = this.y3;		
-		for(int i = 0; i <2; i++){			
-			for(int j = i + 1; j <3; j++){
-				if(points[i][0] > points[j][0])
-				{					
-					tmpX = points[i][0];
-					tmpY = points[i][1];
-					points[i][0] = points[j][0];
-					points[i][1] = points[j][1];
-					points[j][0] = tmpX;
-					points[j][1] = tmpY;				
-				}else if(points[i][0] == points[j][0]){
-					if(points[i][1] > points[j][1]){
-						tmpX = points[j][0];
-						tmpY = points[j][1];
-						points[j][0] = points[i][0];
-						points[j][1] = points[i][1];
-						points[i][0] = tmpX;
-						points[i][1] = tmpY;
-					}
-				}				
+		distanceMoveCenterX = super.getCenterX() + (this.x1 + this.x2 + this.x3)/3;
+		
+		newX1 = this.x1 - distanceMoveCenterX;
+		newX2 = this.x2 - distanceMoveCenterX;
+		newX3 = this.x3 - distanceMoveCenterX;
+		
+		if(isClockwise(this.x1, this.y1, this.x2, this.y2, this.x3, this.y3)){			
+			if(point == 0){				
+				return newX1;
 			}
-			
-			
-		}
-		if(point == 0){
-			int xStart = -1;
-			for(int i = 0; i < 3; i++){
-				if(points[i][0] == this.x1 && points[i][1] == this.y1)
-				{
-					xStart = i;
-					break;
-				}
+			if(point == 1){
+				return newX2;
 			}
-			if(xStart == 0)
-				return points[0][0];			
+			if(point ==  2){
+				return newX3;
+			}
+		}else{
+			if(point == 0)
+				return  newX1;
+			if(point == 1)
+				return  newX3;
+			if(point == 2)
+				return  newX2;
 		}
-		
-		
-		return 0;
+		throw new IllegalArgumentException();
 	}
 	
 	@Override
 	public double getPointY(int point) {
+		double newY1, newY2, newY3;
 		
+		double distanceMoveCenterY;
+		
+		distanceMoveCenterY = super.getCenterY() + (this.y1 + this.y2 + this.y3)/3;
+		
+		newY1 = this.y1 - distanceMoveCenterY;
+		newY2 = this.y2 - distanceMoveCenterY;
+		newY3 = this.y3 - distanceMoveCenterY;
+		if(isClockwise(this.x1, this.y1, this.x2, this.y2, this.x3, this.y3)){
+			if(point == 0){
+				return newY1;
+			}
+			if(point == 1){
+				return newY2;
+			}
+			if(point ==  2){
+				return newY3;
+			}
+		}else{
+			if(point == 0)
+				return newY1;
+			if(point == 1)
+				return newY3;
+			if(point == 2)
+				return newY2;
+		}
 		throw new IllegalArgumentException();
 	}
 	
