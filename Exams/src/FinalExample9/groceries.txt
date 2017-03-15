@@ -1,0 +1,2 @@
+avocado RED 1 blueberries none 5 milk blue
+ 2.00 cream red 1.00 cereal None 1.29
